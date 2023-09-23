@@ -1,4 +1,4 @@
-import { ADD, REMOVEALL, REMOVEONE } from './action';
+import { ADD, DECREMENTQUANTITY, INCREMENTQUANTITY, REMOVEALL, REMOVEONE } from './action';
 
 export const addToCart = (product) => {
 	return {
@@ -8,6 +8,25 @@ export const addToCart = (product) => {
 		},
 	};
 };
+
+export const incrementQuantity = (id) => {
+	return {
+		type: INCREMENTQUANTITY,
+		payload: {
+			id,
+		},
+	};
+};
+
+export const decrementQuantity = (id) => {
+	return {
+		type: DECREMENTQUANTITY,
+		payload: {
+			id
+		}
+	}
+};
+
 
 export const removeOneFromCart = (id) => {
 	return {

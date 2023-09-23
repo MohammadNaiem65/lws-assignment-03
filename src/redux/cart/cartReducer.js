@@ -1,4 +1,10 @@
-import { ADD, REMOVEALL, REMOVEONE } from './action';
+import {
+	ADD,
+	DECREMENTQUANTITY,
+	INCREMENTQUANTITY,
+	REMOVEALL,
+	REMOVEONE,
+} from './action';
 
 const initialState = [];
 
@@ -33,10 +39,30 @@ export default function cartReducer(state = initialState, action) {
 			}
 		}
 
-		case REMOVEONE:
+		case INCREMENTQUANTITY:
 			return [
-				...state.filter((el) => el.id !== action.payload.product.id),
+				...state.filter((el) => el.id !== action.payload.id),
+				{
+					...state.find((el) => el.id === action.payload.id),
+					quantity:
+						state.find((el) => el.id === action.payload.id)
+							.quantity + 1,
+				},
 			];
+
+		case DECREMENTQUANTITY:
+			return [
+				...state.filter((el) => el.id !== action.payload.id),
+				{
+					...state.find((el) => el.id === action.payload.id),
+					quantity:
+						state.find((el) => el.id === action.payload.id)
+							.quantity - 1,
+				},
+			];
+
+		case REMOVEONE:
+			return state.filter((el) => el.id !== action.payload.id);
 
 		case REMOVEALL:
 			return [];
