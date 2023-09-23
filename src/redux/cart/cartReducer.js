@@ -6,17 +6,13 @@ export default function cartReducer(state = initialState, action) {
 	switch (action.type) {
 		case ADD: {
 			const isPresent = state.find(
-				(el) =>
-					JSON.stringify(el) ===
-					JSON.stringify(action.payload.product)
+				(el) => el.id === action.payload.product.id
 			);
 
 			if (isPresent) {
 				return [
 					...state.filter(
-						(el) =>
-							JSON.stringify(el) !==
-							JSON.stringify(action.payload.product)
+						(el) => el.id !== action.payload.product.id
 					),
 					{
 						...action.payload.product,
@@ -36,11 +32,7 @@ export default function cartReducer(state = initialState, action) {
 
 		case REMOVEONE:
 			return [
-				...state.filter(
-					(el) =>
-						JSON.stringify(el) !==
-						JSON.stringify(action.payload.product)
-				),
+				...state.filter((el) => el.id !== action.payload.product.id),
 			];
 
 		case REMOVEALL:
