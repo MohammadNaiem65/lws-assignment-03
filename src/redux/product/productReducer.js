@@ -1,4 +1,4 @@
-import { ADD } from './action';
+import { ADD, DECREASEQUANTITY } from './action';
 
 const initialState = [
 	{
@@ -7,7 +7,7 @@ const initialState = [
 		name: 'Spring and Summer Shoes',
 		category: 'Mens Shoe',
 		price: 400,
-		quantity: 11,
+		quantity: 5,
 	},
 ];
 
@@ -18,6 +18,17 @@ export default function productReducer(state = initialState, action) {
 	switch (action.type) {
 		case ADD:
 			return [...state, { id: newId(state), ...action.payload.product }];
+
+		case DECREASEQUANTITY:
+			return [
+				...state.filter((el) => el.id !== action.payload.id),
+				{
+					...state.find((el) => el.id === action.payload.id),
+					quantity:
+						state.find((el) => el.id === action.payload.id)
+							.quantity - 1,
+				},
+			];
 
 		default:
 			return state;

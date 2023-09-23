@@ -1,13 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cart/actionCreators';
+import { decreaseQuantity } from '../../redux/product/actionCreators';
 
 export default function Product({ product }) {
 	// ! Required variables and hooks
 	const dispatch = useDispatch();
-	const { image, name, category, price, quantity } = product;
+	const { id, image, name, category, price, quantity } = product;
 
 	const addProductToCart = () => {
 		dispatch(addToCart(product));
+		dispatch(decreaseQuantity(id));
 	};
 
 	return (
@@ -28,7 +30,10 @@ export default function Product({ product }) {
 						QTY <span className='lws-quantity'>{quantity}</span>
 					</p>
 				</div>
-				<button className='lws-btnAddToCart' onClick={addProductToCart}>
+				<button
+					className='lws-btnAddToCart disabled:bg-gray-400'
+					disabled={quantity ? false : true}
+					onClick={addProductToCart}>
 					Add To Cart
 				</button>
 			</div>
