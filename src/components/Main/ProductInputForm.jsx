@@ -20,6 +20,7 @@ export default function ProductInputForm() {
 		dispatch(addProduct(productDetails));
 		form.reset();
 	};
+	
 	return (
 		<div className='formContainer'>
 			<h4 className='formTitle'>Add New Product</h4>
