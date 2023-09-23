@@ -3,7 +3,7 @@ import { ADD } from './action';
 const initialState = [
 	{
 		id: 1,
-		img: 'https://i.dummyjson.com/data/products/98/thumbnail.jpg',
+		image: 'https://i.dummyjson.com/data/products/98/thumbnail.jpg',
 		name: 'Spring and Summer Shoes',
 		category: 'Mens Shoe',
 		price: 400,

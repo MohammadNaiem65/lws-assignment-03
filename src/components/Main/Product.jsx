@@ -1,10 +1,10 @@
 export default function Product({ product }) {
 	// ! Required variables and hooks
-	const { id, img, name, category, price, quantity } = product;
+	const { id, image, name, category, price, quantity } = product;
 	
 	return (
 		<div className='lws-productCard'>
-			<img className='lws-productImage' src={img} alt='product' />
+			<img className='lws-productImage w-80 h-56' src={image} alt='product' />
 			<div className='p-4 space-y-2'>
 				<h4 className='lws-productName'>{name}</h4>
 				<p className='lws-productCategory'>{category}</p>
