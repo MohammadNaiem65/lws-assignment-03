@@ -16,7 +16,10 @@ export default function cartReducer(state = initialState, action) {
 					),
 					{
 						...action.payload.product,
-						quantity: action.payload.product.quantity + 1,
+						quantity:
+							state.find(
+								(el) => el.id === action.payload.product.id
+							).quantity + 1,
 					},
 				];
 			} else {

@@ -3,9 +3,13 @@ import Main from './components/Main/Main';
 import Cart from './components/Cart/Cart';
 import logo from './assets/logo.png';
 import './App.css';
+import { useSelector } from 'react-redux';
 
 function App() {
+	// ! Required variables and hooks
 	const [onHome, setOnHome] = useState(true);
+	const cart = useSelector((state) => state.cart);
+	const quantity = cart.reduce((maxId, curr) => maxId + curr.quantity, 0);
 
 	return (
 		<div>
@@ -33,7 +37,7 @@ function App() {
 							id='lws-cart'
 							onClick={() => setOnHome(false)}>
 							<i className='text-xl fa-sharp fa-solid fa-bag-shopping'></i>
-							<span id='lws-totalCart'>0</span>
+							<span id='lws-totalCart'>{quantity}</span>
 						</button>
 					</div>
 				</div>
