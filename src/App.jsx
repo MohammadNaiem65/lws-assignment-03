@@ -22,10 +22,12 @@ function App() {
 					</button>
 
 					<div className='flex gap-4'>
-						<a href='#home' className='navHome' id='lws-home'>
-							{' '}
-							Home{' '}
-						</a>
+						<button
+							className='navHome'
+							id='lws-home'
+							onClick={() => setOnHome(true)}>
+							Home
+						</button>
 						<button
 							className='navCart'
 							id='lws-cart'
@@ -37,6 +39,7 @@ function App() {
 				</div>
 			</nav>
 
+			{/* Main Page */}
 			{onHome ? <Main /> : <Cart />}
 		</div>
 	);
